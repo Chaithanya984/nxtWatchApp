@@ -1,5 +1,7 @@
 import {Component} from 'react'
 
+import {Redirect} from 'react-router-dom'
+
 import Cookies from 'js-cookie'
 
 import {
@@ -36,7 +38,6 @@ class Login extends Component {
 
   LoginSumbit = async event => {
     event.preventDefault()
-    console.log(Cookies.get('jwt_token'))
     const {inputPassword, inputName} = this.state
     const urls = 'https://apis.ccbp.in/login'
     const datas = {username: inputName, password: inputPassword}
@@ -56,7 +57,6 @@ class Login extends Component {
   }
 
   callMyname = event => {
-    console.log(Cookies.get('jwt_token'))
     this.setState({inputName: event.target.value})
   }
 
@@ -70,6 +70,12 @@ class Login extends Component {
 
   render() {
     const {inputName, isValid, showError, showMsg} = this.state
+    const getCookies = Cookies.get('jwt_token')
+
+    if (getCookies !== undefined) {
+      return <Redirect to="/" />
+    }
+
     return (
       <NxtwatchContext.Consumer>
         {value => {
@@ -84,7 +90,7 @@ class Login extends Component {
                         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
                         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
                     }
-                    alt="light"
+                    alt="website logo"
                   />
                 </ImgBox>
                 <InputCont>

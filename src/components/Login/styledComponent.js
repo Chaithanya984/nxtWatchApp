@@ -10,12 +10,19 @@ export const Background = styled.div`
 `
 
 export const SubBox = styled.form`
-  min-height: 50vh;
+  min-height: 55vh;
   background-color: red;
-  min-width: 400px;
-  width: 35%;
-  max-width: 700px;
+
+  width: 85%;
+  max-width: 500px;
+
   padding: 28px;
+  @media (max-width: 767px) {
+    width: 75%;
+
+    min-height: 40vh;
+    max-height: 60vh;
+  }
 `
 export const ImgBox = styled.div`
   width: 100%;
@@ -59,7 +66,7 @@ export const ButtonLog = styled.button`
   height: 38px;
   border-width: 0px;
   font-family: 'Roboto';
-  color: white;
+  color: #ffffff;
 `
 export const InputChecks = styled.input`
   height: 20px;
